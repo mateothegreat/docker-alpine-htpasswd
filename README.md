@@ -8,7 +8,7 @@
 #
 #-->
 
-[![Clickity click](https://img.shields.io/badge/k8s%20by%20example%20yo-limit%20time-ff69b4.svg?style=flat-square)](https://k8.matthewdavis.io)
+[![Clickity click](https://img.shields.io/badge/k8s%20by%20example%20yo-ingress%20httpauth-ff69b4.svg?style=flat-square)](https://k8.matthewdavis.io) [![Docker Build Status](https://img.shields.io/docker/build/appsoa/docker-alpine-htpasswd.svg?style=flat-square)](https://hub.docker.com/r/appsoa/docker-alpine-htpasswd/)
 [![Twitter Follow](https://img.shields.io/twitter/follow/yomateod.svg?label=Follow&style=flat-square)](https://twitter.com/yomateod) [![Skype Contact](https://img.shields.io/badge/skype%20id-appsoa-blue.svg?style=flat-square)](skype:appsoa?chat)
 
 # htpasswd generator
