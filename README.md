@@ -11,50 +11,34 @@
 [![Clickity click](https://img.shields.io/badge/k8s%20by%20example%20yo-limit%20time-ff69b4.svg?style=flat-square)](https://k8.matthewdavis.io)
 [![Twitter Follow](https://img.shields.io/twitter/follow/yomateod.svg?label=Follow&style=flat-square)](https://twitter.com/yomateod) [![Skype Contact](https://img.shields.io/badge/skype%20id-appsoa-blue.svg?style=flat-square)](skype:appsoa?chat)
 
-# nmap container for kubernetes & such
+# htpasswd generator
 
 > k8 by example -- straight to the point, simple execution.
 
-## kubernetes port scannin'
-
-```
-$ kubectl run --image=appsoa/docker-alpine-nmap --rm -i -t nm -- -Pn -p9200,9300 elasticsearch.es elasticsearch-discovery.es
-
-Starting Nmap 7.40 ( https://nmap.org ) at 2018-02-03 16:54 UTC
-
-Nmap scan report for elasticsearch.es (10.15.248.94)
-Host is up (0.0013s latency).
-
-rDNS record for 10.15.248.94: elasticsearch.es.svc.cluster.local
-
-PORT     STATE    SERVICE
-9200/tcp open     wap-wsp
-9300/tcp filtered vrace
-
-Nmap scan report for elasticsearch-discovery.es (10.15.252.251)
-Host is up (0.00018s latency).
-
-rDNS record for 10.15.252.251: elasticsearch-discovery.es.svc.cluster.local
-
-PORT     STATE    SERVICE
-9200/tcp filtered wap-wsp
-9300/tcp open     vrace
-
-Nmap done: 2 IP addresses (2 hosts up) scanned in 1.41 seconds
-```
-
-## docker `run'in`
+## Usage
 
 ```sh
-[matthew@centos-1 ~]$ docker run --rm -it appsoa/docker-alpine-nmap -Pn -p80,443 google.com
+yomateod@proliant:/mnt/c/workspace/docker/docker-alpine-htpasswd$ make
+Deploy & Manage Kibana in Kubernetes.
 
-Starting Nmap 7.40 ( https://nmap.org ) at 2018-02-03 16:47 UTC
-Nmap scan report for google.com (209.85.147.139)
-Host is up (0.0015s latency).
-rDNS record for 209.85.147.139: jg-in-f139.1e100.net
-PORT    STATE SERVICE
-80/tcp  open  http
-443/tcp open  https
+Usage:
 
-Nmap done: 1 IP address (1 host up) scanned in 0.28 seconds
+  make <target>
+
+Targets:
+
+  build                Build local docker image using $NAME and $VERSION environment variables
+  run                  Generate htpasswd outputs using $USERNAME and $PASSWORD environment variables
+```
+
+## Example
+
+Outputs plaintext value of the .htpasswd file:
+
+```sh
+yomateod@proliant:/mnt/c/workspace/docker/docker-alpine-htpasswd$ make run
+
+docker run --rm -it appsoa/docker-alpine-htpasswd:1.0.0 "user" "bu5ZHe1s24+NiECqPAqc7gg7cIy1HiRJxIS1PzGBoq8="
+
+user:$2y$05$oLXPXn9igJ9SsexPZ8MgdO52I9ypJPbwJusepb/ncV.6p1AYj4I2K
 ```
